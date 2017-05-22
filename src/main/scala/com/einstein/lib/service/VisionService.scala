@@ -13,8 +13,15 @@ import org.apache.http.{HttpEntity, HttpResponse}
 
 /**
   * Created by Rajdeep Dua on 9/5/17.
+  *
   */
-object VisionService {
+
+trait VisionService {
+  def predictImage(url: String, modelId: String, accessToken: String): java.util.List[_]
+  def predictLocalImage(localFilePath: String, modelId: String, accessToken: String):List[_]
+}
+
+class VisionServiceImpl extends VisionService {
   def predictRemoteImage(): Unit = {
 
   }
