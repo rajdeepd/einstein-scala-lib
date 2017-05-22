@@ -1,7 +1,7 @@
 package com.einstein.lib.example
 
 import com.einstein.lib.Constants
-import com.einstein.lib.service.DataSetService
+import com.einstein.lib.service.{DataSetServiceImpl, DataSetService}
 
 /**
   * Created by Rajdeep Dua on 9/5/17.
@@ -10,7 +10,8 @@ object ShowModelMetrics {
   def main(args: Array[String]) = {
     val accessToken = Constants.ACCESS_TOKEN
     val modelId = "MLHNXXILAFF4B5ZKIG5R3I75OA"
-    val modelMetrics = DataSetService.getModelMetrics(accessToken, modelId)
+    val dataSetService = new DataSetServiceImpl
+    val modelMetrics = dataSetService.getModelMetrics(accessToken, modelId)
     val f1Score = modelMetrics.getF1
     val labels = modelMetrics.getLabels
     val testAccuracy = modelMetrics.getTestAccuracy

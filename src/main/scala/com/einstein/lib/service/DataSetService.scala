@@ -6,6 +6,7 @@ import com.einstein.lib.dataset.{DataSets, DataSet}
 import com.einstein.lib.model.{Metrics, MetricsData, Models}
 import com.einstein.lib.{ImageToBase64, Constants, Util}
 import com.einstein.lib.dataset.CreateDataSetResponse
+import com.einstein.lib.dataset.TrainDataSetResponse
 import com.google.gson.Gson
 import org.apache.http.{HttpEntity, HttpResponse}
 import org.apache.http.client.HttpClient
@@ -16,9 +17,20 @@ import org.apache.http.entity.mime.{HttpMultipartMode, MultipartEntityBuilder}
 import org.apache.http.impl.client.BasicResponseHandler
 
 /**
-  * Created by ubuntu on 11/5/17.
+  * Created by Rajdeep Dua on 11/5/17.
   */
-object DataSetService {
+
+trait DataSetService {
+  def getDataSetsList(accessToken: String): List[_]
+  def getDataSetAndModelList(accessToken: String): List[_]
+  def getAllModels(accessToken: String, id: Long): List[_]
+  def getModelMetrics(accessToken : String, id: String) : MetricsData
+  def createDataSet(accessToken : String, path : String): CreateDataSetResponse
+  def deleteDataSet(accessToken: String, id : String) : String
+  def trainDataSet(accessToken: String, id: String) : TrainDataSetResponse
+}
+
+class DataSetServiceImpl extends DataSetService {
   @throws(classOf[Exception])
   def getDataSetsList(accessToken: String): List[_] = {
     val client: HttpClient = Util.getClient
@@ -117,7 +129,6 @@ object DataSetService {
     post.setEntity(entity)
     val handler: BasicResponseHandler = new BasicResponseHandler
     val response: HttpResponse = client.execute(post)
-    println(response)
     val body: String = handler.handleResponse(response)
     val gson: Gson = new Gson
     val res: CreateDataSetResponse = gson.fromJson(body, classOf[CreateDataSetResponse])
@@ -138,7 +149,30 @@ object DataSetService {
     val handler: BasicResponseHandler = new BasicResponseHandler
     val response: HttpResponse = client.execute(delete)
     println(response)
-    return ""
+    return response.toString
+  }
 
+  // curl -X POST -H "Authorization: Bearer <TOKEN>" -H "Cache-Control: no-cache" -H "Content-Type: multipart/form-data"
+  // -F "name=Beach Mountain Model" -F "datasetId=57" https://api.metamind.io/v1/vision/train
+
+  def trainDataSet(accessToken: String, id: String) : TrainDataSetResponse = {
+    val client: HttpClient = Util.getClient
+    val url = "https://api.metamind.io/v1/vision/train"
+    val post: HttpPost = new HttpPost(url)
+    post.setHeader("Cache-Control", "no-cache")
+    post.setHeader("Authorization", "Bearer " + accessToken)
+    val builder: MultipartEntityBuilder = MultipartEntityBuilder.create
+    builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
+    builder.addTextBody("name", "Beach Mountain Model Test")
+    builder.addTextBody("datasetId", id)
+    val entity: HttpEntity = builder.build
+    post.setEntity(entity)
+    val handler: BasicResponseHandler = new BasicResponseHandler
+    val response: HttpResponse = client.execute(post)
+    println(response)
+    val body: String = handler.handleResponse(response)
+    val gson: Gson = new Gson
+    val res: TrainDataSetResponse = gson.fromJson(body, classOf[TrainDataSetResponse])
+    return res
   }
 }
