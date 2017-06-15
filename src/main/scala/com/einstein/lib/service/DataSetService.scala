@@ -99,7 +99,7 @@ class DataSetServiceImpl extends DataSetService {
   @throws(classOf[Exception])
   def getModelMetrics(accessToken : String, id: String) : MetricsData = {
     val client: HttpClient = Util.getClient
-    val modelUrl: String = Constants.BASE + "/models/" + id
+    val modelUrl: String = Constants.BASE + "models/" + id
     val get: HttpGet = new HttpGet(modelUrl)
     get.setHeader("Cache-Control", "no-cache")
     get.setHeader("Authorization", "Bearer " + accessToken)
@@ -113,15 +113,11 @@ class DataSetServiceImpl extends DataSetService {
     val metricsData: MetricsData = res.getMetricsData
     return metricsData
   }
-  /*
-  //curl -X POST -H "Authorization: Bearer <TOKEN>" -H "Cache-Control: no-cache" -H
-  // "Content-Type: multipart/form-data" -F
-  // "path=https://dropboxusercontent.com/u/99999999/mountainvsbeach.zip"
-  // https://api.metamind.io/v1/vision/datasets/upload/sync
-  */
+
   def createDataSet(accessToken : String, path : String): CreateDataSetResponse = {
     val client: HttpClient = Util.getClient
-    val url = "https://api.metamind.io/v1/vision/datasets/upload/sync"
+    //val url = Constants.DATASETS + "/upload/sync"
+    val url = Constants.DATASETS_v1 + "/upload/sync"
     val post: HttpPost = new HttpPost(url)
     post.setHeader("Cache-Control", "no-cache")
     post.setHeader("Authorization", "Bearer " + accessToken)
@@ -145,7 +141,8 @@ class DataSetServiceImpl extends DataSetService {
 
   def createDataSetFromLocalFile(accessToken : String, path : String): CreateDataSetResponse = {
     val client: HttpClient = Util.getClient
-    val url = "https://api.einstein.ai/v1/vision/datasets/upload/sync"
+    //val url = Constants.DATASETS + "/upload/sync"
+    val url = Constants.DATASETS_v1 + "/upload/sync"
     val post: HttpPost = new HttpPost(url)
     post.setHeader("Cache-Control", "no-cache")
     post.setHeader("Authorization", "Bearer " + accessToken)
@@ -165,12 +162,11 @@ class DataSetServiceImpl extends DataSetService {
     return res
   }
   //curl -X DELETE -H "Authorization: Bearer <TOKEN>" -H
-  // "Cache-Control: no-cache" https://api.metamind.io/v1/vision/datasets/<DATASET_ID>
+  // "Cache-Control: no-cache" https://api.einstein.ai/v1/vision/datasets/<DATASET_ID>
 
   def deleteDataSet(accessToken: String, id : String) : String = {
-    //req, err := http.NewRequest("DELETE", "https://api.metamind.io/v1/vision/datasets/" +  id, nil)
     val client: HttpClient = Util.getClient
-    val url = "https://api.metamind.io/v1/vision/datasets/" +  id
+    val url = Constants.DATASETS + "/" + id
     //val post: HttpPost = new HttpPost(url)
     val delete: HttpDelete = new HttpDelete(url)
     delete.setHeader("Cache-Control", "no-cache")
@@ -181,11 +177,11 @@ class DataSetServiceImpl extends DataSetService {
   }
 
   // curl -X POST -H "Authorization: Bearer <TOKEN>" -H "Cache-Control: no-cache" -H "Content-Type: multipart/form-data"
-  // -F "name=Beach Mountain Model" -F "datasetId=57" https://api.metamind.io/v1/vision/train
+  // -F "name=Beach Mountain Model" -F "datasetId=57" https://api.einstein.ai/v1/vision/train
 
   def trainDataSet(accessToken: String, id: String) : TrainDataSetResponse = {
     val client: HttpClient = Util.getClient
-    val url = Constants.BASE + "train" //"https://api.metamind.io/v1/vision/train"
+    val url = Constants.BASE + "train" //"https://api.einstein.ai/v1/vision/train"
     val post: HttpPost = new HttpPost(url)
     post.setHeader("Cache-Control", "no-cache")
     post.setHeader("Authorization", "Bearer " + accessToken)

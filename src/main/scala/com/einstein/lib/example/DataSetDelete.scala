@@ -9,7 +9,7 @@ import com.einstein.lib.service.{DataSetServiceImpl, DataSetService}
 object DataSetDelete {
   def main(args: Array[String]) = {
     val accessToken = Constants.ACCESS_TOKEN
-    val id = 1004149
+    val id = 1004253
     val dataSetService = new DataSetServiceImpl
     val response = dataSetService.deleteDataSet(accessToken, id.toString)
     println(response)

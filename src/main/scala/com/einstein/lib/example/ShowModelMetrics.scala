@@ -9,7 +9,7 @@ import com.einstein.lib.service.{DataSetServiceImpl, DataSetService}
 object ShowModelMetrics {
   def main(args: Array[String]) = {
     val accessToken = Constants.ACCESS_TOKEN
-    val modelId = "MLHNXXILAFF4B5ZKIG5R3I75OA"
+    val modelId = "JPNFIOFRUS6RUNI23AZ7HIWFPQ"
     val dataSetService = new DataSetServiceImpl
     val modelMetrics = dataSetService.getModelMetrics(accessToken, modelId)
     val f1Score = modelMetrics.getF1

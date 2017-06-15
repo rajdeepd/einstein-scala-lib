@@ -8,7 +8,7 @@ import com.einstein.lib.Constants
   */
 object PredictRemoteImage {
   def main(args: Array[String]) = {
-    val url = "http://metamind.io/images/foodimage.jpg"
+    val url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Pepperoni_pizza.jpg/440px-Pepperoni_pizza.jpg"
     val modelId = "FoodImageClassifier"
     val accessToken = Constants.ACCESS_TOKEN
     val visionService = new VisionServiceImpl()

@@ -11,7 +11,6 @@ import com.einstein.lib.service.VisionServiceImpl
   */
 object PredictLocalImage {
   def main(args: Array[String]) = {
-    val url = "http://metamind.io/images/foodimage.jpg"
     val localFilePath = "/home/ubuntu/Downloads/samosa.jpeg"
     val modelId = "FoodImageClassifier"
     val accessToken = Constants.ACCESS_TOKEN
