@@ -31,6 +31,9 @@ trait DataSetService {
   def createDataSetFromLocalFile(accessToken : String, path : String): CreateDataSetResponse
   def deleteDataSet(accessToken: String, id : String) : String
   def trainDataSet(accessToken: String, id: String) : TrainDataSetResponse
+  def deleteIntentDataSet(accessToken: String, id : String) : String
+
+  def getIntentDataSetList(accessToken: String): List[_]
 }
 
 class DataSetServiceImpl extends DataSetService {
@@ -199,4 +202,62 @@ class DataSetServiceImpl extends DataSetService {
     val res: TrainDataSetResponse = gson.fromJson(body, classOf[TrainDataSetResponse])
     return res
   }
+
+  def getIntentDataSetList(accessToken: String): List[_] ={
+    val client: HttpClient = Util.getClient
+    val datasetsUrl: String = "https://api.einstein.ai/v2/language/datasets"
+    val get: HttpGet = new HttpGet(datasetsUrl)
+    get.setHeader("Cache-Control", "no-cache")
+    get.setHeader("Authorization", "Bearer " + accessToken)
+    val builder: MultipartEntityBuilder = MultipartEntityBuilder.create
+    builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
+    val handler: BasicResponseHandler = new BasicResponseHandler
+    val response: HttpResponse = client.execute(get)
+    val body: String = handler.handleResponse(response)
+    val gson: Gson = new Gson
+    val res: DataSets = gson.fromJson(body, classOf[DataSets]).asInstanceOf[DataSets]
+    val datasetsList: List[_] = res.getData
+    return datasetsList
+  }
+
+  def deleteIntentDataSet(accessToken: String, id : String) : String = {
+    val client: HttpClient = Util.getClient
+    val url = Constants.DATASETS_INTENT + "/" + id
+    //val post: HttpPost = new HttpPost(url)
+    val delete: HttpDelete = new HttpDelete(url)
+    delete.setHeader("Cache-Control", "no-cache")
+    delete.setHeader("Authorization", "Bearer " + accessToken)
+    val handler: BasicResponseHandler = new BasicResponseHandler
+    val response: HttpResponse = client.execute(delete)
+    return response.toString
+  }
+
+  /*
+   * curl -X POST -H "Authorization: Bearer ec7b4b22ea6e423ff87780d4f56b65c6395b48"
+   * https://api.einstein.ai/v2/language/train \
+   * -F datasetId="1004533" \
+   * -F name="CallRoutingv1"
+   */
+
+  def trainIntentDataSet(accessToken: String, dataSetId: String, modelName: String) : TrainDataSetResponse = {
+    val client: HttpClient = Util.getClient
+    val url = Constants.LANG_TRAIN
+    val post: HttpPost = new HttpPost(url)
+    post.setHeader("Cache-Control", "no-cache")
+    post.setHeader("Authorization", "Bearer " + accessToken)
+    val builder: MultipartEntityBuilder = MultipartEntityBuilder.create
+    builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
+    builder.addTextBody("name", modelName)
+    builder.addTextBody("datasetId", dataSetId)
+    val entity: HttpEntity = builder.build
+    post.setEntity(entity)
+    val handler: BasicResponseHandler = new BasicResponseHandler
+    val response: HttpResponse = client.execute(post)
+    println(response)
+    val body: String = handler.handleResponse(response)
+    val gson: Gson = new Gson
+    val res: TrainDataSetResponse = gson.fromJson(body, classOf[TrainDataSetResponse])
+    return res
+  }
+
 }

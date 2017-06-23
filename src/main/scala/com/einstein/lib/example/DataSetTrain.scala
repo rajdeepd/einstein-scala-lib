@@ -9,11 +9,12 @@ import com.einstein.lib.service.DataSetServiceImpl
 object DataSetTrain {
   def main(args: Array[String]) = {
     val accessToken = Constants.ACCESS_TOKEN
-    //val path = "http://metamind.io/images/mountainvsbeach.zip"
     val datasetId = "1004151"
     val dataSetService = new DataSetServiceImpl
     val response = dataSetService.trainDataSet(accessToken, datasetId)
-    println(response)
-
+    println("DatasetID: " + response.getDatasetId)
+    println("ModelId: " + response.getModelId)
+    println("ModelType: " + response.getModelType)
+    println("Status: " + response.getStatus)
   }
 }

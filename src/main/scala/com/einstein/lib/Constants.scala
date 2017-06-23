@@ -14,4 +14,9 @@ object Constants {
   var ACCESS_TOKEN: String = System.getenv("access_token")
   var MODEL_ID_FOOD_IMAGE_CLASSIFIER: String = "FoodImageClassifier"
   //val ACCESS_TOKEN = "ec7b4b22ea6e423ff87780d4f56b65c206395b48"
+
+  val BASE_LANG : String = "https://api.einstein.ai/v2/language"
+  val BASE_INTENT : String = BASE_LANG + "/intent"
+  val DATASETS_INTENT : String = BASE_LANG + "/datasets"
+  val LANG_TRAIN : String  =  BASE_LANG + "/train"
 }
