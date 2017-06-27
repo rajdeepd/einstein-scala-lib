@@ -6,12 +6,14 @@ import com.einstein.lib.service.DataSetServiceImpl
 /**
   * Created by Rajdeep Dua on 9/5/17.
   */
-object IntentDataSetDelete {
+object IntentDataSetCreate {
   def main(args: Array[String]) = {
     val accessToken = Constants.ACCESS_TOKEN
-    val id = 1004474
+    val path = "./data/CallRouting.csv"
     val dataSetService = new DataSetServiceImpl
-    val response = dataSetService.deleteIntentDataSet(accessToken, id.toString)
-    println(response)
+    val response = dataSetService.createIntentDataSet(accessToken, path)
+    println("id: " + response.getId)
+    println("name: " + response.getName)
+    println("created at: " + response.getCreatedAt)
   }
 }

@@ -1,0 +1,152 @@
+Where is the nearest location for me?,Retail Location
+Is there a Adidas store close by,Retail Location
+how far is the nearest retail outlet,Retail Location
+find me a store,Retail Location
+where can I buy adidas gear,Retail Location
+is there adidas  store near me,Retail Location
+where is the adidas store in sf?,Retail Location
+is there adidas in Miami?,Retail Location
+does Adidas have a physical store here?,Retail Location
+"I'd like to return my purchase to a retail store, is one near by?",Retail Location
+Can I try my gear on someplace close,Retail Location
+is there a store near by,Retail Location
+where are you located?,Retail Location
+am I close to you?,Retail Location
+please find me a store,Retail Location
+get me the nearest store?,Retail Location
+I'd like to shop nearby,Retail Location
+where can I get more gear?,Retail Location
+do you have a store here,Retail Location
+do you know where a store is around my location,Retail Location
+what store is closest to me?,Retail Location
+do you have a store near my home address,Retail Location
+i forgot my password,Account Change
+i want to reset my password,Account Change
+i can't remember my login,Account Change
+login problems,Account Change
+unable to login,Account Change
+can I reset my password,Account Change
+where do I got to find my password,Account Change
+I forgot my credentials,Account Change
+I can't login,Account Change
+please reset me,Account Change
+whats my PW,Account Change
+do you have a way to reset my PW remotely?,Account Change
+I cant figure out my user name /passoword combo,Account Change
+I hit the limits on my password,Account Change
+my account is locked,Account Change
+my password is locked?,Account Change
+I cant sing in?,Account Change
+how do I log in?,Account Change
+I need to change my account info?,Account Change
+make an account change,Account Change
+"I need to update my account, can you help?",Account Change
+how can I change my account details,Account Change
+user profile update,Account Change
+can you change my profile to a new address,Account Change
+can you chage my profile to have my latest address,Account Change
+can you reflect the shipping address as my home address?,Account Change
+how do I update account settings,Account Change
+can I change privacy settings,Account Change
+i forgot my password,Account Change
+i want to reset my password,Account Change
+i canÌçt remember my login,Account Change
+login problems,Account Change
+unable to login,Account Change
+when will my order arrive?,Order Status
+i'm still waiting for my package.,Order Status
+track order,Order Status
+iÌçd like to track my package,Order Status
+iÌçd like to check the status of my order?,Order Status
+i want to know if my order has shipped,Order Status
+my package hasn't arrive,Order Status
+when will it come by?,Order Status
+do you know if my package shipped,Order Status
+has my order been fulfilled,Order Status
+when can I see the order status for my purchase?,Order Status
+what is my shipping status?,Order Status
+do you have my tracking # handy?,Order Status
+is there a ,Order Status
+"my shoes haven't arrived, where are they?",Order Status
+"my order says in progress, what does that mean?",Order Status
+is there a expected delivery date for my latest order,Order Status
+when should I receive my items by,Order Status
+do you drop off the shoes at my door or do I need to sign?,Order Status
+can I check on the latest location of my order?,Order Status
+why is taking so long to get me my shoes? Are they close?,Order Status
+Should I receive my shoes by this Tuesday?,Order Status
+I need my order to come by Thursday is that possible,Order Status
+can I get an update on my order status?,Order Status
+who is the shipper of my products? I can't find the tracking info,Order Status
+are those shoes being shipped overnight?,Order Status
+Do you do overnight shipping on all orders,Order Status
+what is the timeline to receive my order?,Order Status
+"oops I made the wrong order quantity, can I update it?",Order Change
+is it too late to update my shipping address,Order Change
+is my order still pending,Order Change
+"I just bought online but need to change quanity, can you help",Order Change
+"I misspelled the location, can you help me update this?",Order Change
+do you know if my order is fulfilled yet? I want to make a change,Order Change
+can I change a pending order,Order Change
+can I update my delivery to overnight?,Order Change
+where can I see my pending purchases,Order Change
+I'd like to change the credit card on my last purchase,Order Change
+"my order hasn't shipped, can I make an order change?",Order Change
+I need to edit a purchase,Order Change
+what is the best way to quickly make a change on an existing purchase,Order Change
+"shoot, I messed my last order up, can you help me edit it?",Order Change
+"my order is still pending, can I change my address",Order Change
+"my purchase hasn't shipped, can I update my address",Order Change
+"you haven't shipped my order, can I add to it?",Order Change
+"if it is still not processed and shipped, how can I make a change",Order Change
+I need to fix a mistake on my latest order,Order Change
+help! I need to edit my purchase from just 5 minutes ago,Order Change
+"if you have a second, can you change something on my recent purchase?",Order Change
+Do you have any new products available?,Product Recommendation
+when is the spring catalog come up out?,Product Recommendation
+is the summer options available?,Product Recommendation
+can I buy last year's jersey anymore?,Product Recommendation
+do you have a shirt that goes with my shorts?,Product Recommendation
+does adidas make my shoes in hightops,Product Recommendation
+"can I buy another pair, these are great?",Product Recommendation
+do you have any recommended products,Product Recommendation
+"I like soccer, any new kits available?",Product Recommendation
+"that is it, unless you have any recommended products",Product Recommendation
+"thanks for help, do you have any more products in stock I would like",Product Recommendation
+"just got my last order yesterday and I want to buy a pair for my friend, but its sold out, any other options?",Product Recommendation
+"I don't like my shoes, can you recommend any others in that color",Product Recommendation
+"I am looking for a more formal shoe, do you have any options?",Product Recommendation
+"I'm all set, found my order, now I want to buy a hat",Product Recommendation
+need a new hat to go with these shoes,Product Recommendation
+do you have any matching products,Product Recommendation
+"thatÌçs it, but would like to find out what other gear you have that I simila",Product Recommendation
+"awesome, any other recommendations",Product Recommendation
+do you know where I can find my favorite team's gear?,Product Recommendation
+Do you have any more barca gear,Product Recommendation
+Do you have any more real madrid kits?,Product Recommendation
+hi,greeting
+wassup,greeting
+how you doing,greeting
+you there?,greeting
+hello,greeting
+greetings,greeting
+hey,greeting
+"hi, I have a couple quick questions, can you help me with that?",greeting
+"Hi, I am hoping you can help me with an issue, are you free?",greeting
+"sup, got a second to answer a question for me?",greeting
+yo,greeting
+"hi, I have a quick question",greeting
+can you help me?,greeting
+hey there,greeting
+thanks a lot,Close Case
+you rock,Close Case
+thanks,Close Case
+adios,Close Case
+best,Close Case
+see you later,Close Case
+"great, appreciate the help",Close Case
+hasta manana,Close Case
+"That is it, thanks",Close Case
+"no more, appreciate it",Close Case
+I'm good,Close Case
+"great, all done",Close Case

@@ -19,4 +19,5 @@ object Constants {
   val BASE_INTENT : String = BASE_LANG + "/intent"
   val DATASETS_INTENT : String = BASE_LANG + "/datasets"
   val LANG_TRAIN : String  =  BASE_LANG + "/train"
+  val DATASETS_INTENT_UPLOAD : String = DATASETS_INTENT + "/upload"
 }

@@ -260,4 +260,28 @@ class DataSetServiceImpl extends DataSetService {
     return res
   }
 
+  def createIntentDataSet(accessToken : String, path : String): CreateDataSetResponse = {
+    val client: HttpClient = Util.getClient
+    val url = Constants.DATASETS_INTENT_UPLOAD
+    val post: HttpPost = new HttpPost(url)
+    post.setHeader("Cache-Control", "no-cache")
+    post.setHeader("Authorization", "Bearer " + accessToken)
+    val builder: MultipartEntityBuilder = MultipartEntityBuilder.create
+    builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
+
+    val file = new File(path)
+    builder.addBinaryBody("data", file)
+    builder.addTextBody("type","text-intent")
+    val entity: HttpEntity = builder.build
+    post.setEntity(entity)
+
+    val handler: BasicResponseHandler = new BasicResponseHandler
+    val response: HttpResponse = client.execute(post)
+    val body: String = handler.handleResponse(response)
+    val gson: Gson = new Gson
+    val res: CreateDataSetResponse = gson.fromJson(body, classOf[CreateDataSetResponse])
+    println(res)
+    return res
+  }
+
 }
